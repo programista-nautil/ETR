@@ -5,6 +5,16 @@ const dataCount = document.querySelectorAll('.dataCount')
 const dataIndex = document.querySelectorAll('.dataIndex')
 const rangeValue = document.querySelectorAll('.range')
 
+dataIndex.forEach(item => {
+	item.textContent = ''
+})
+rangeValue.forEach(item => {
+	item.value = 0
+})
+dataCount.forEach(item => {
+	item.value = ''
+})
+
 const btClear = () => {
 	const text = document.querySelector('#textInput')
 	console.log(text)
