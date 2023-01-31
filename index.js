@@ -4,6 +4,7 @@ const spanSentencesCount = document.querySelector('.sentencesCount')
 const dataCount = document.querySelectorAll('.dataCount')
 const dataIndex = document.querySelectorAll('.dataIndex')
 const rangeValue = document.querySelectorAll('.range')
+const message_prompt = document.querySelector('.prompt_message')
 
 dataIndex.forEach(item => {
 	item.textContent = ''
@@ -17,12 +18,18 @@ dataCount.forEach(item => {
 
 const btClear = () => {
 	const text = document.querySelector('#textInput')
+	message_prompt.classList.add('prompt_message')
 	console.log(text)
 	text.value = ''
 }
 
 const textAnalytic = () => {
 	const text = document.querySelector('#textInput').value
+
+	message_prompt.classList.remove('prompt_message')
+
+	let targetSection = document.querySelector('#headerAnali')
+	targetSection.scrollIntoView({ behavior: 'smooth' })
 
 	const words = text.split(' ').length
 	const sentences = text.split(/[.?!]/).length
@@ -35,6 +42,8 @@ const textAnalytic = () => {
 		}
 		word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
 		word = word.replace(/^y/, '')
+
+		console.log(word)
 		return word.match(/[aeiouy]{1,2}/g).length
 	}
 
