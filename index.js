@@ -21,6 +21,16 @@ const btClear = () => {
 	message_prompt.classList.add('prompt_message')
 	console.log(text)
 	text.value = ''
+
+	dataIndex.forEach(item => {
+		item.textContent = ''
+	})
+	rangeValue.forEach(item => {
+		item.value = 0
+	})
+	dataCount.forEach(item => {
+		item.value = ''
+	})
 }
 
 const textAnalytic = () => {
