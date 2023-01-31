@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/ss.css">
+    <script src=" https://kit.fontawesome.com/031cba9a01.js" crossorigin="anonymous">
+    </script>
+    <title>ETR</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <nav class="box-2">
+            <div class="hero-shadow"></div>
+            <div class="logo">
+                <a href="#"><img class="logo-nav" src="../assets/nautil-logo.png" alt="Logo strony www"></a>
+            </div>
+            <ul class="nav-items">
+                <li class="nav-link"><a class="nav-link" href="#textInput">Łatwy tekst</a></li>
+                <li class="nav-link"><a class="nav-link" href="#headerAnali">Wyniki analizy</a></li>
+                <li class="nav-link"><a class="nav-link" href="#">kontakt</a></li>
+            </ul>
+        </nav>
+
+        <section>
+            <h2>NAUTIL</h2>
+            <p class="welcome-text">Sprawdź poprawność tekstu.</p>
+            <label for="textInput"></label>
+            <textarea name="textInput" id="textInput" class="textarea" cols="70" rows="15" data -text></textarea>
+            <button class="btn pure-button fuller-button white">ANALIZUJ</button>
+            <button class="btn pure-button fuller-button red clear">WYCZYŚĆ</button>
+        </section>
+
+        <main class="box-3">
+
+            <h2 class="header-title" id="headerAnali">Wyniki czytelności tekstu</h2>
+            <p>Wykresy przedstawiają w formie graficznej wyniki testów przeprowadzonych na dostarczonym tekście.
+                Czerwony oznacza trudny tekst do zrozumienia. Zielony łatwy.</p>
+
+            <div class="container">
+
+                <div class="product-details">
+
+                    <h2>Indeks czytelności Flescha</h2>
+
+                    <p class="card-desc">Na podstawie skali 0-100. Wysoki wynik oznacza, że ​​tekst jest łatwiejszy do
+                        odczytania. Niskie wyniki sugerują, że tekst jest trudny do zrozumienia. Metoda ta oblicza
+                        poziom trudności poprzez określenie średniej długości słów oraz średniej ilości zdań w tekście.
+                        Metoda ta pomimo, iż jest najstarszą to do dziś przez wielu uważana jest za najlepszą metodę
+                        określenia trudności czytanego tekstu.</p>
+
+                    <p>206,835 - 1,015 x (słowa/zdania) - 84,6 x (sylaby/słowa)</p>
+                    <p></p>
+
+                    <section class="silder">
+                        <Input class="range rangeFlesch" type="range" name="" value="0" min="0" max="100"></Input>
+                    </section>
+                    <span class="dataIndex"></span>
+                </div>
+            </div>
+            <div class="container">
+
+                <div class="product-details">
+
+                    <h2>Indeks czytelności Flesch Kincaid Grade</h2>
+
+                    <p class="card-desc">Indeks czytelności Flescha-Kincaida jest najczęściej używaną miarą czytelności.
+                        W przeciwieństwie do Indeksu Flescha tutaj mamy skalę 0-18. W odróżnieniu od zwykłego indeksu
+                        Flescha, możemy zaobserwować tutaj 18-stopniowy poziom czytelności tekstu, gdzie stopień 0-3 to
+                        poziom zaczęcia nauki czytania książek, a poziom 15-18 to poziom studiów podyplomowych.
+                    </p>
+                    <p>0.39 x (words/sentences) + 11.8 x (syllables/words) - 15.59</p>
+
+
+                    <section class="slider">
+                        <Input class="range rangeFlesch" type="range" name="" value="0" min="0" max="18"></Input>
+                    </section>
+                    <span class="dataIndex"></span>
+                </div>
+            </div>
+            <div class="container">
+
+                <div class="product-details">
+
+                    <h2>Indeks czytelności FOG</h2>
+                    <p class="card-desc">Indeks czytelności Fog podobnie jak inne indeksy podają wartość jak ciężki do
+                        zrozumienia jest dany tekst dla odbiorcy. Indeks ten opiera się głównie na długich słowach w
+                        tekście (4 sylaby lub więcej). Mamy tutaj 18 stopniową skalę trudności tekstu, gdzie stopień 1-6
+                        to klasy od 1 do 6 w podstawówce, natomiast wynik 18 i wyższy to osoby z wyższym wykształceniem.
+                        Trzeba pamiętać jednak, że poziom zrozumienia treści czytanego tekstu nie zależy od samych lat
+                        edukacji, ale indywidualnie od każdego człowieka.
+                    </p>
+                    <p>0.4 x ( (wyrazy/zdania) + 100 x (trudne słowa/wyrazy) )</p>
+
+
+                    <section class="silder">
+                        <Input class="range rangeFlesch" type="range" name="" value="" min="0" max="20"></Input>
+                    </section>
+                    <span class="dataIndex"></span>
+                </div>
+            </div>
+            <div class="container">
+
+                <div class="product-details">
+
+                    <h2>Indeks czytelności wg Pisarka</h2>
+
+                    <p class="card-desc">Indeks czytelności Pisarka został wymyślony w celu sprawdzenia trudności
+                        czytanych tekstów w języku polskim, ponieważ większość indeksów była lub dalej jest dostosowana
+                        do języka angielskiego. Wzór pisarka opiera się na przeciętnej długości zdania oraz na wyrazach
+                        trudnych w zdaniu (czterosylabowych lub dłuższych). Dzięki Pisarkowi wiemy, że czasopismo
+                        ,,Tina” jest bardzo łatwa i zrozumiała dla czytelnika, natomiast ,,Biuletyn Pol. Tow.
+                        Językoznawczego” może sprawiać kłopoty nie jednemu czytelnikowi.</p>
+                    <p>5.89 x (znaki/wyrazy) - 0.3 x (zdania/wyrazy) - 15.8</p>
+
+
+                    <section class="silder">
+                        <Input class="range rangeFlesch" type="range" name="" value="0" min="0" max="16"></Input>
+                    </section>
+                    <span class="dataIndex"></span>
+                </div>
+            </div>
+            <div class="container">
+
+                <div class="product-details">
+
+                    <h2>Indeks czytelności SMOG</h2>
+
+                    <p class="card-desc">Indeks czytelności SMOG jest głównie stosowany do oceny złożoności czytania
+                        dokumentów w dziedzinie zdrowia. Badanie z 2010 roku opublikowane przez Journal of the Royal
+                        College of Physicians of Edinburgh, czyli czasopismo medyczne zajmujące się medycyną kliniczną,
+                        edukacją medyczną oraz historią medycyny stwierdziło, że indeks SMOG powinien być preferowaną
+                        miarą czytelności podczas oceny materiałów dotyczących zdrowia konsumentów. W porównaniu do
+                        innych indeksów, skuteczność indeksu czytelności SMOG nie została zweryfikowana statystycznie na
+                        innych językach niż angielski.
+                    </p>
+                    <p>1.0430 x sqrt( 30 x trudne słowa/zdania ) + 3.1291</p>
+
+
+                    <section class="silder">
+                        <Input class="range rangeFlesch" type="range" name="" value="0" min="0" max="16"></Input>
+                    </section>
+                    <span class="dataIndex"></span>
+                </div>
+            </div>
+            <div class="container">
+
+                <div class="product-details">
+
+                    <h2>Indeks czytelności Automated Readability</h2>
+
+                    <p class="card-desc">Indeks czytelności automated readability w skrócie ARI jest to zautomatyzowany
+                        indeks czytelności dla tekstów w języku angielskim. Podobnie jak inne indeksy czytelności daje
+                        on przybliżoną ocenę trudności do przeczytania danego tekstu. W odróżnieniu od innych systemów
+                        tutaj liczy się znaki, a nie sylaby. Im więcej znaków ma dane słowo tym jest trudniejsze. Skala
+                        w przypadku tego indeksu wynosi 1-14, a wynik można przyrównać do amerykańskiego systemu
+                        szkolnego, gdzie 1 oznacza przedszkole, a 14 college.
+                    </p>
+
+
+                    <section class="silder">
+                        <Input class="range rangeFlesch" type="range" name="" value="0" min="0" max="16"></Input>
+                    </section>
+                    <span class="dataIndex"></span>
+                </div>
+            </div>
+        </main>
+        <section id="aboutus">
+
+            <div class="container-card-about-us">
+                <div class="card">
+                    <div class="box">
+                        <div class="content">
+                            <h2>01</h2>
+                            <h3>Ilość zdań w tekście</h3>
+                            <p><span class="sentencesCount dataCount"></span></p>
+                            <!-- <a href="#">Read More</a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="box">
+                        <div class="content">
+                            <h2>02</h2>
+                            <h3>Ilość wyrazów w tekście</h3>
+                            <p><span class="hardWord dataCount"></span></p>
+                            <!-- <a href="#">Read More</a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="box">
+                        <div class="content">
+                            <h2>03</h2>
+                            <h3>Ilość trudnych wyrazów</h3>
+                            <p><span class="spanRoundSyllsCount dataCount"></p>
+                            <!-- <a href="#">Read More</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-card-about-us">
+                <div class="card">
+                    <div class="box">
+                        <div class="content">
+                            <h2>04</h2>
+                            <h3>Procentowa ilość wyrazów trudnych</h3>
+                            <p><span class="spanRoundSyllsCount dataCount"></p>
+                        </div>
+                        <!-- <a href="#">Read More</a> -->
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="box">
+                        <div class="content">
+                            <h2>05</h2>
+                            <h3>Średnia ilość słów w zdaniu</h3>
+                            <p><span class="spanRoundSentencesCount dataCount"></span></p>
+                            <!-- <a href="#">Read More</a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="box">
+                        <div class="content">
+                            <h2>06</h2>
+                            <h3>Średnia ilość sylab w słowach</h3>
+                            <p><span class="spanHardWordPercent dataCount"></span></p>
+                            <!-- <a href="#">Read More</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="box-4"></footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script type="application/javascript" src="./index.js"></script>
+</body>
