@@ -2,6 +2,7 @@ const { Configuration, OpenAIApi } = require('openai')
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+require('dotenv').config()
 
 const app = express()
 app.use(bodyParser.json())
@@ -9,31 +10,15 @@ app.use(cors())
 
 const configuration = new Configuration({
 	organization: 'org-6Tek1w19lJGP7YrwAteynHq3',
-	apiKey: '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',
+	apiKey: process.env.OPENAI_API_KEY,
 })
+
+console.log(process.env.test)
 const openai = new OpenAIApi(configuration)
 
 app.get('/', (req, res) => {
 	res.send('Welcome to the Coding Nexus API')
 })
-
-// const runPrompt = async () => {
-// 	console.log(test)
-// 	const prompt = `${userprompt}
-//         Przeanalizuj tekst używając wskaźnika FOG i wypisz w punktach jak można poprawić tekst aby był bardziej zrozumiały. Dodatkowo wypisz od myślnika trudne wyrazy które można zamienić i propozycje słów do zamiany.
-//     `
-
-// 	const response = await openai.createCompletion({
-// 		model: 'text-davinci-003',
-// 		prompt: prompt,
-// 		max_tokens: 2048,
-// 		temperature: 1,
-// 	})
-
-// 	const parsableJSONresponse = response.data.choices[0].text
-
-// 	console.log(parsableJSONresponse)
-// }
 
 app.post('/message', (req, res) => {
 	const response = openai.createCompletion({
