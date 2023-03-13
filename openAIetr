@@ -1,0 +1,34 @@
+const inputArea = document.getElementById('input-area')
+const outputArea = document.getElementById('output-area')
+const axios = require('axios')
+
+inputArea.addEventListener('input', async function () {
+	const query = 'Ile to jest 2+2 i dlaczego wyszedł taki wynik'
+	const response = await sendMessage(query)
+	outputArea.value = response
+})
+
+async function sendMessage(query) {
+	try {
+		const response = await axios.post(
+			'https://api.openai.com/v1/engines/davinci/jobs',
+			{
+				prompt: query,
+				max_tokens: 100,
+				n: 1,
+				stop: null,
+				temperature: 0.5,
+			},
+			{
+				headers: {
+					Authorization: 'Bearer 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',
+					'Content-Type': 'application/json',
+				},
+			}
+		)
+
+		return response.data.choices[0].text
+	} catch (error) {
+		console.error(error)
+	}
+}

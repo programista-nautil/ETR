@@ -1,3 +1,73 @@
-body {
-    background-color: aquamarine;
+.card {
+	display: flex;
+	position: relative;
+	flex-direction: row;
+	align-items: center;
+	width: 80%;
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	-webkit-box-shadow: 0 15px 30px 1px grey;
+	box-shadow: 0 15px 30px 1px grey;
+	transition: 0.3s;
+}
+
+.card-icon {
+	position: absolute;
+	width: 2em;
+	height: 2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-image: url('/assets/question.png');
+	background-size: cover;
+	background-position: center;
+	border-radius: 50%;
+	margin-right: 20px;
+	cursor: pointer;
+	top: 10%;
+	right: 0;
+	transition: 0.3s;
+}
+
+.rangeFlesch {
+	width: 70%;
+	padding: 2em;
+}
+
+.dataIndex {
+	font-size: 2em;
+	color: #344055;
+}
+
+.card-content {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	transition: 0.3s;
+}
+
+.card-title {
+	text-align: center;
+	font-size: 22px;
+	margin-bottom: 10px;
+}
+
+.card-description,
+.card-hidden-description {
+	height: 50%;
+	width: 100%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	transition: 0.3s;
+}
+
+.card-description{
+    opacity: 0;
 }

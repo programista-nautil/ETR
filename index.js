@@ -6,6 +6,42 @@ const dataIndex = document.querySelectorAll('.dataIndex')
 const rangeValue = document.querySelectorAll('.range')
 const message_prompt = document.querySelector('.prompt_message')
 
+const cardDescription = document.querySelector('.card-description')
+const cardHiddenDescription = document.querySelector('.card-hidden-description')
+
+const cardIcons = document.querySelectorAll('.card-icon')
+
+const userprompt = document.querySelector('.promptAI')
+const aiexplanation = document.querySelector('.aiexplanation')
+const buttonAI = document.querySelector('.buttonAI')
+
+for (const button of cardIcons) {
+	let hiddenDescriptionVisible = false
+	button.addEventListener('click', function () {
+		if (!hiddenDescriptionVisible) {
+			const cardContent = this.nextElementSibling
+			const cardDescription = cardContent.querySelector('.card-description')
+			cardDescription.style.opacity = 1
+			hiddenDescriptionVisible = true
+		} else {
+			const cardContent = this.nextElementSibling
+			const cardDescription = cardContent.querySelector('.card-description')
+			cardDescription.style.opacity = 0
+			hiddenDescriptionVisible = false
+		}
+	})
+}
+
+// cardIcon.addEventListener('click', function () {
+// 	if (!hiddenDescriptionVisible) {
+// 		cardDescription.style.opacity = 1
+// 		hiddenDescriptionVisible = true
+// 	} else {
+// 		cardDescription.style.opacity = 0
+// 		hiddenDescriptionVisible = false
+// 	}
+// })
+
 dataIndex.forEach(item => {
 	item.textContent = ''
 })
@@ -13,7 +49,7 @@ rangeValue.forEach(item => {
 	item.value = 0
 })
 dataCount.forEach(item => {
-	item.value = ''
+	item.value = 0
 })
 
 const btClear = () => {
@@ -29,7 +65,7 @@ const btClear = () => {
 		item.value = 0
 	})
 	dataCount.forEach(item => {
-		item.value = ''
+		item.value = 0
 	})
 }
 
@@ -208,7 +244,7 @@ const textAnalytic = () => {
 
 	//SMOG Index
 	function smogIndex() {
-		const polysyllables = countPolysyllables(text)
+		const polysyllables = countSyllables(text)
 		const score = 1.043 * Math.sqrt(polysyllables * (30 / sentences)) + 3.1291
 		let difficulty
 		if (score >= 12) {
@@ -277,5 +313,82 @@ const textAnalytic = () => {
 	}
 }
 
+function sendMessage() {
+	const editor = document.getElementById('preview')
+	let lines = editor.innerText.trim().split('\n')
+	let text = ''
+
+	for (let i = 0; i < lines.length; i++) {
+		text += lines[i].trim()
+		if (i < lines.length - 1) {
+			text += ' \n'
+		}
+	}
+
+	const message = `${text} Przeanalizuj tekst używając wskaźnika FOG i wypisz w punktach jak można poprawić tekst aby był bardziej zrozumiały. Dodatkowo wypisz od myślnika trudne wyrazy w cudzysłowiu które można zamienić i propozycje słów do zamiany. Streść i uprość tekst`
+	aiexplanation.value = ''
+
+	fetch('http://localhost:3000/message', {
+		method: 'POST',
+		headers: {
+			accept: 'application.json',
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ message }),
+	})
+		.then(response => {
+			return response.json()
+		})
+		.then(data => {
+			console.log(data)
+			aiexplanation.value = data.message
+			console.log(data.message)
+			console.log(message)
+		})
+}
+
+const editor = document.getElementById('editor')
+const preview = document.getElementById('preview')
+const saveButton = document.getElementById('save-button')
+
+function updatePreview() {
+	const text = editor.textContent.trim()
+	const sentences = text.split(/[.?!]+/)
+
+	const previewHTML = sentences
+		.map(sentence => {
+			const words = sentence.split(/\s+/)
+			const isHard = words.length >= 18 && words.length < 28
+			const isVeryHard = words.length >= 28
+			const className = isVeryHard ? 'hard-sentence' : isHard ? 'long-sentence' : ''
+			const modifiedWords = words.map(word => {
+				return `<span>${word}</span>`
+			})
+			const sentenceHTML = `<p class="${className}">${modifiedWords.join(' ')}</p>`
+			return sentenceHTML
+		})
+		.join('')
+
+	preview.innerHTML = previewHTML
+}
+
+editor.addEventListener('keydown', updatePreview)
+
+saveButton.addEventListener('click', () => {
+	const editor = document.getElementById('preview')
+	let lines = editor.innerText.trim().split('\n')
+	let text = ''
+
+	for (let i = 0; i < lines.length; i++) {
+		text += lines[i].trim()
+		if (i < lines.length - 1) {
+			text += ' \n'
+		}
+	}
+
+	console.log(text)
+})
+
 btn.addEventListener('click', textAnalytic)
 btnClear.addEventListener('click', btClear)
+buttonAI.addEventListener('click', sendMessage)
