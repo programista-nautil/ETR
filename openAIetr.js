@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 const configuration = new Configuration({
-	organization: 'org-6Tek1w19lJGP7YrwAteynHq3',
+	organization: process.env.organization,
 	apiKey: process.env.OPENAI_API_KEY,
 })
 
